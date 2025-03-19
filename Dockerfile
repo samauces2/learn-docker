@@ -1,13 +1,17 @@
-# Etapa 1: Construcción
-FROM python:3.10 AS builder
+# Usa una imagen base de Python
+FROM python:3.10
+
+# Establecer el directorio de trabajo dentro del contenedor
 WORKDIR /app
-COPY requirements.txt .
+
+# Copiar archivos de la app
+COPY . .
+
+# Instalar dependencias
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Etapa 2: Imagen final optimizada
-FROM python:3.10
-WORKDIR /app
-COPY --from=builder /usr/local/lib/python3.10/site-packages /usr/local/lib/python3.10/site-packages
-COPY app.py .
+# Exponer el puerto en el que corre Flask
 EXPOSE 5000
+
+# Comando para correr la aplicación
 CMD ["python", "app.py"]
