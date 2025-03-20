@@ -1,11 +1,13 @@
-version: "3.8"
-
+version: '3.8'
 services:
-  web:
-    build: .
+  api:
+    build: ./microservices-api # Carpeta donde está el Dockerfile de la API
     ports:
-      - "${PORT}:${PORT}"
-    env_file:
-      - .env
-    volumes:
-      - .:/app  # Monta el código fuente dentro del contenedor
+      - "5000:5000"
+  
+  frontend:
+    build: ./microservices-frontend # Carpeta donde está el Dockerfile del Front-End
+    ports:
+      - "5001:5001"
+    depends_on:
+      - api # El Front-End no se ejecutará hasta que la API esté lista

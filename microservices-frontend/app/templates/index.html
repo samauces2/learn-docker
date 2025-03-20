@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla de Personajes de Anime</title>
+</head>
+<body>
+    <h2>Personajes de Anime</h2>
+    <table border="1">
+        <tr>
+            <th>Nombre</th>
+            <th>Poder</th>
+            <th>Anime</th>
+        </tr>
+        {% for character in characters %}
+        <tr>
+            <td>{{ character.name }}</td>
+            <td>{{ character.power_level }}</td>
+            <td>{{ character.anime }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
