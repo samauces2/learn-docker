@@ -3,3 +3,4 @@ Flask-Cors
 requests
 Faker
 pandas
+pymongo
